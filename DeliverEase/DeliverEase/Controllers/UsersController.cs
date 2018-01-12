@@ -9,31 +9,26 @@ using System.Web.Mvc;
 
 namespace DeliverEase.Controllers
 {
-     [Authorize]
+    [Authorize]
     public class UsersController : Controller
     {
         // GET: Users
        
         public ActionResult Index()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                var user = User.Identity;
-                ViewBag.Name = user.Name;
+            
+            var user = User.Identity;
 
-                ViewBag.displayMenu = "No";
-
-                if (isAdminUser())
-                {
-                    ViewBag.displayMenu = "Yes";
-                }
-                return View();
-            }
-            else
+            if (isAdminUser())
             {
-                ViewBag.Name = "Not Logged IN";
+                return View("Admin");
             }
-            return View();
+            else if (User.IsInRole("Customer"))
+            {
+                return View("Customer");
+            }
+            return Content("You dun goof'd");
+
         }
         public Boolean isAdminUser()
         {
@@ -54,5 +49,6 @@ namespace DeliverEase.Controllers
             }
             return false;
         }
+       
     }
 }

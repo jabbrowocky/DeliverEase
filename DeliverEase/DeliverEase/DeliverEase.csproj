@@ -206,10 +206,18 @@
     <Compile Include="Migrations\201801121552030_test.Designer.cs">
       <DependentUpon>201801121552030_test.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801121813040_test2.cs" />
+    <Compile Include="Migrations\201801121813040_test2.Designer.cs">
+      <DependentUpon>201801121813040_test2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\DeliveryDriver.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Menu.cs" />
+    <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -275,6 +283,10 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\Admin.cshtml" />
+    <Content Include="Views\Users\Customer.cshtml" />
+    <Content Include="Views\Users\DeliveryDriver.cshtml" />
+    <Content Include="Views\Users\Restaurant.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -290,6 +302,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201801121552030_test.resx">
       <DependentUpon>201801121552030_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801121813040_test2.resx">
+      <DependentUpon>201801121813040_test2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

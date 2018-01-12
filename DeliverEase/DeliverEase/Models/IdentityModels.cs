@@ -16,6 +16,7 @@ namespace DeliverEase.Models
             // Add custom user claims here
             return userIdentity;
         }
+        public bool IsPending { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

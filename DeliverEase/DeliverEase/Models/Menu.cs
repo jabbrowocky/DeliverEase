@@ -5,7 +5,7 @@ using System.Web;
 
 namespace DeliverEase.Models
 {
-    public class Restaurant:ApplicationUser
+    public class Menu
     {
     }
 }
