@@ -50,7 +50,7 @@ namespace DeliverEase.Models
     {
         [Required]
         [Display(Name = "Username")]        
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -70,7 +70,7 @@ namespace DeliverEase.Models
 
         [Required]
         [Display(Name = "Username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [Required]
         [Display(Name = "User Roles")]

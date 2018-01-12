@@ -13,40 +13,11 @@ namespace DeliverEase.Controllers
     {
         public ActionResult Index()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                var user = User.Identity;
-                
-
-                if (isAdminUser())
-                {
-                    return RedirectToAction("Index", "Users");
-                }
-                
-            }
+            
             return View();
             
-            
         }
-        public Boolean isAdminUser()
-        {
-            if (User.Identity.IsAuthenticated)
-            {
-                var user = User.Identity;
-                ApplicationDbContext context = new ApplicationDbContext();
-                var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-                var s = UserManager.GetRoles(user.GetUserId());
-                if (s[0].ToString() == "Admin")
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            return false;
-        }
+        
 
         public ActionResult About()
         {
