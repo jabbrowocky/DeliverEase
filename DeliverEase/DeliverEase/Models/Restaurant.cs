@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
 namespace DeliverEase.Models
 {
-    public class Restaurant:ApplicationUser
+    public class Restaurant
     {
+        [Key]
+        public int RestaurantId { get; set; }
+        public string RestaurantName { get; set; }
     }
 }

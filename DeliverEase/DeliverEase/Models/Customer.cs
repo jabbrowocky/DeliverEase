@@ -5,7 +5,9 @@ using System.Web;
 
 namespace DeliverEase.Models
 {
-    public class Customer: ApplicationUser
+    public class Customer
     {
+
+        public int id { get; set; }
     }
 }

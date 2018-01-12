@@ -5,7 +5,7 @@ using System.Web;
 
 namespace DeliverEase.Models
 {
-    public class DeliveryDriver:ApplicationUser
+    public class DeliveryDriver
     {
     }
 }

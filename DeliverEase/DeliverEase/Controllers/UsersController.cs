@@ -13,21 +13,30 @@ namespace DeliverEase.Controllers
     public class UsersController : Controller
     {
         // GET: Users
-       
-        public ActionResult Index()
+
+        public ActionResult Index(string role)
         {
-            
+
             var user = User.Identity;
 
             if (isAdminUser())
             {
                 return View("Admin");
             }
-            else if (User.IsInRole("Customer"))
+            else if (User.IsInRole("Customer") || role == "Customer")
             {
+               
                 return View("Customer");
             }
-            return Content("You dun goof'd");
+            else if (User.IsInRole("Restaurant") || role == "Restaurant")
+            {
+                return View("Restaurant");
+            }
+            else if (User.IsInRole("DeliveryDriver") || role == "DeliveryDriver")
+            {
+                return View("DeliveryDriver");
+            }
+            return RedirectToAction("Index", "Home");
 
         }
         public Boolean isAdminUser()
