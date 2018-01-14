@@ -25,7 +25,9 @@ namespace DeliverEase
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-theme.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/GoogleMaps.css"
+                      ));
         }
     }
 }
