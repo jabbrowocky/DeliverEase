@@ -34,5 +34,7 @@ namespace DeliverEase.Models
         public System.Data.Entity.DbSet<DeliverEase.Models.Restaurant> Restaurants { get; set; }
 
         public System.Data.Entity.DbSet<DeliverEase.Models.Menu> Menus { get; set; }
+
+        public System.Data.Entity.DbSet<DeliverEase.Models.Customer> Customers { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿#map-canvas {
         min-height: 250px; 
         height: 500px;
-         width: 85%;
+        width: 85%;
         min-width: 30%;
         border: 5px groove green;
      }

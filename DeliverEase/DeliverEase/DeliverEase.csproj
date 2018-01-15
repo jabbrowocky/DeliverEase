@@ -196,6 +196,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MenusController.cs" />
@@ -224,10 +225,20 @@
     <Compile Include="Migrations\201801122119378_tired of this.Designer.cs">
       <DependentUpon>201801122119378_tired of this.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801152019109_not sure.cs" />
+    <Compile Include="Migrations\201801152019109_not sure.Designer.cs">
+      <DependentUpon>201801152019109_not sure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801152026193_controller for customer added.cs" />
+    <Compile Include="Migrations\201801152026193_controller for customer added.Designer.cs">
+      <DependentUpon>201801152026193_controller for customer added.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\CustomerViewModel.cs" />
     <Compile Include="Models\DeliveryDriver.cs" />
+    <Compile Include="Models\DriverViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Menu.cs" />
@@ -313,6 +324,11 @@
     <Content Include="Views\Menus\Details.cshtml" />
     <Content Include="Views\Menus\Edit.cshtml" />
     <Content Include="Views\Menus\Index.cshtml" />
+    <Content Include="Views\Customers\Create.cshtml" />
+    <Content Include="Views\Customers\Delete.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Customers\Edit.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -340,6 +356,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801122119378_tired of this.resx">
       <DependentUpon>201801122119378_tired of this.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801152019109_not sure.resx">
+      <DependentUpon>201801152019109_not sure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801152026193_controller for customer added.resx">
+      <DependentUpon>201801152026193_controller for customer added.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
