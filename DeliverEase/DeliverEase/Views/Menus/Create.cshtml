@@ -39,15 +39,12 @@
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
-        <divn class="form-group">
-            <div class ="col-md-offset-2 col-md-10">
-                <br />
-                @{ Html.ActionLink("Finish", "Index", "Restaurant", new { model = Model.Restaurant });}
-            </div>
-        </divn>
+        
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+<divn class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <br />
+        @Html.ActionLink("Finish", "Index", "Restaurants")
+    </div>
+</divn>

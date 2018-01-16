@@ -2,10 +2,13 @@
 
 @{string name = Model.RestaurantName;}
 
-<h4>Hey! @name</h4>
+
 
 <div>
-     
-    @Html.ActionLink("Create Menu", "Create", "Menus") 
-    
+    <div class="jumbotron">
+        <center><h4>Hey! @name</h4></center> 
+    </div>
+    <div class="row">
+    @Html.ActionLink("Create Menu", "Create", "Menus")
+    </div>
 </div>
