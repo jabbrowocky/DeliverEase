@@ -47,7 +47,7 @@ namespace DeliverEase.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RestaurantId,RestaurantName")] Restaurant restaurant)
+        public ActionResult Create([Bind(Include = "RestaurantId,RestaurantName,RestaurantAddress")] Restaurant restaurant)
         {
             string userId = User.Identity.GetUserId();
             if (ModelState.IsValid)

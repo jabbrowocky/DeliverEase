@@ -44,7 +44,18 @@ namespace DeliverEase.Controllers
             }
             else if (s[0].ToString() == "Restaurant" || role == "Restaurant")
             {
-                return View("Restaurant");
+                foreach(Restaurant partner in context.Restaurants)
+                {
+                    if(partner.UserId == userId)
+                    {
+                        return RedirectToAction("Index", "Restaurants");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Create", "Restaurants");
+                    }
+                }
+                return RedirectToAction("Create", "Restaurants");
             }
             else if (s[0].ToString() == "DeliveryDriver" || role == "DeliveryDriver")
             {

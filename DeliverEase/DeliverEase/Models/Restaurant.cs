@@ -11,7 +11,9 @@ namespace DeliverEase.Models
     {
         [Key]
         public int RestaurantId { get; set; }
+        [Display(Name ="Restaurant Name:")]
         public string RestaurantName { get; set; }
+        [Display(Name = "Restaurant Address:")]
         public string RestaurantAddress { get; set; }
         public string UserId { get; set; }
         [ForeignKey ("UserId")]
