@@ -197,6 +197,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\DeliveryDriversController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MenusController.cs" />
@@ -205,33 +206,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801121552030_test.cs" />
-    <Compile Include="Migrations\201801121552030_test.Designer.cs">
-      <DependentUpon>201801121552030_test.cs</DependentUpon>
+    <Compile Include="Migrations\201801161429002_init.cs" />
+    <Compile Include="Migrations\201801161429002_init.Designer.cs">
+      <DependentUpon>201801161429002_init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801121813040_test2.cs" />
-    <Compile Include="Migrations\201801121813040_test2.Designer.cs">
-      <DependentUpon>201801121813040_test2.cs</DependentUpon>
+    <Compile Include="Migrations\201801161504138_work goddamnit.cs" />
+    <Compile Include="Migrations\201801161504138_work goddamnit.Designer.cs">
+      <DependentUpon>201801161504138_work goddamnit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801121835155_error fix.cs" />
-    <Compile Include="Migrations\201801121835155_error fix.Designer.cs">
-      <DependentUpon>201801121835155_error fix.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801121849020_test3.cs" />
-    <Compile Include="Migrations\201801121849020_test3.Designer.cs">
-      <DependentUpon>201801121849020_test3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801122119378_tired of this.cs" />
-    <Compile Include="Migrations\201801122119378_tired of this.Designer.cs">
-      <DependentUpon>201801122119378_tired of this.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801152019109_not sure.cs" />
-    <Compile Include="Migrations\201801152019109_not sure.Designer.cs">
-      <DependentUpon>201801152019109_not sure.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801152026193_controller for customer added.cs" />
-    <Compile Include="Migrations\201801152026193_controller for customer added.Designer.cs">
-      <DependentUpon>201801152026193_controller for customer added.cs</DependentUpon>
+    <Compile Include="Migrations\201801161506001_don%27t break please kthx.cs" />
+    <Compile Include="Migrations\201801161506001_don%27t break please kthx.Designer.cs">
+      <DependentUpon>201801161506001_don%27t break please kthx.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -242,6 +227,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Menu.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -329,6 +315,11 @@
     <Content Include="Views\Customers\Details.cshtml" />
     <Content Include="Views\Customers\Edit.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\DeliveryDrivers\Create.cshtml" />
+    <Content Include="Views\DeliveryDrivers\Delete.cshtml" />
+    <Content Include="Views\DeliveryDrivers\Details.cshtml" />
+    <Content Include="Views\DeliveryDrivers\Edit.cshtml" />
+    <Content Include="Views\DeliveryDrivers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -342,26 +333,14 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201801121552030_test.resx">
-      <DependentUpon>201801121552030_test.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801161429002_init.resx">
+      <DependentUpon>201801161429002_init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801121813040_test2.resx">
-      <DependentUpon>201801121813040_test2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801161504138_work goddamnit.resx">
+      <DependentUpon>201801161504138_work goddamnit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801121835155_error fix.resx">
-      <DependentUpon>201801121835155_error fix.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801121849020_test3.resx">
-      <DependentUpon>201801121849020_test3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801122119378_tired of this.resx">
-      <DependentUpon>201801122119378_tired of this.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801152019109_not sure.resx">
-      <DependentUpon>201801152019109_not sure.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801152026193_controller for customer added.resx">
-      <DependentUpon>201801152026193_controller for customer added.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801161506001_don%27t break please kthx.resx">
+      <DependentUpon>201801161506001_don%27t break please kthx.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -13,20 +13,33 @@ namespace DeliverEase.Controllers
     public class UsersController : Controller
     {
         // GET: Users
-
+        ApplicationDbContext context = new ApplicationDbContext();
         public ActionResult Index(string role)
         {
-
+            
             var user = User.Identity;
-
+            var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            var s = UserManager.GetRoles(user.GetUserId());
+            
+            string userId = User.Identity.GetUserId();
             if (isAdminUser())
             {
                 return View("Admin");
             }
-            else if (User.IsInRole("Customer") || role == "Customer")
-            {
-               
-                return View("Customer");
+            else if ( s[0].ToString() == "Customer" || role == "Customer")
+            {                
+                foreach(Customer customer in context.Customers)
+                {
+                    if (customer.UserId == userId)
+                    {
+                        return RedirectToAction("Index","Customers");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Create", "Customers");
+                    }
+                }
+                return RedirectToAction("Create", "Customers");
             }
             else if (User.IsInRole("Restaurant") || role == "Restaurant")
             {
@@ -44,7 +57,7 @@ namespace DeliverEase.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 var user = User.Identity;
-                ApplicationDbContext context = new ApplicationDbContext();
+               
                 var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
                 var s = UserManager.GetRoles(user.GetUserId());
                 if (s[0].ToString() == "Admin")

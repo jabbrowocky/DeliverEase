@@ -7,13 +7,13 @@ namespace DeliverEase.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class tiredofthis : IMigrationMetadata
+    public sealed partial class dontbreakpleasekthx : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(tiredofthis));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(dontbreakpleasekthx));
         
         string IMigrationMetadata.Id
         {
-            get { return "201801122119378_tired of this"; }
+            get { return "201801161506001_don't break please kthx"; }
         }
         
         string IMigrationMetadata.Source

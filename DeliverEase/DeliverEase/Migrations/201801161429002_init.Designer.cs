@@ -7,13 +7,13 @@ namespace DeliverEase.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class notsure : IMigrationMetadata
+    public sealed partial class init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(notsure));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(init));
         
         string IMigrationMetadata.Id
         {
-            get { return "201801152019109_not sure"; }
+            get { return "201801161429002_init"; }
         }
         
         string IMigrationMetadata.Source

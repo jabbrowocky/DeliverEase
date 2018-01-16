@@ -15,7 +15,7 @@ namespace DeliverEase.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                RedirectToAction("Index","Users");
+                return RedirectToAction("Index","Users");
             }
             return View();
             

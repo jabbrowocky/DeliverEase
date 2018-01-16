@@ -9,5 +9,6 @@ namespace DeliverEase.Models
     {
         Menu selectedMenu { get; set; }
         Customer customer { get; set; }
+        Order order { get; set; }
     }
 }
