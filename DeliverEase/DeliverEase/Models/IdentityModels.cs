@@ -38,5 +38,7 @@ namespace DeliverEase.Models
         public System.Data.Entity.DbSet<DeliverEase.Models.Customer> Customers { get; set; }
 
         public System.Data.Entity.DbSet<DeliverEase.Models.DeliveryDriver> DeliveryDrivers { get; set; }
+
+        public System.Data.Entity.DbSet<DeliverEase.Models.Order> Orders { get; set; }
     }
 }

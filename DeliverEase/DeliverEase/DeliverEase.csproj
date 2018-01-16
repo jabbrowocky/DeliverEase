@@ -210,6 +210,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MenusController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\RestaurantsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -231,6 +232,14 @@
     <Compile Include="Migrations\201801161542511_updated restaurant model.cs" />
     <Compile Include="Migrations\201801161542511_updated restaurant model.Designer.cs">
       <DependentUpon>201801161542511_updated restaurant model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801162100152_order foreign key created.cs" />
+    <Compile Include="Migrations\201801162100152_order foreign key created.Designer.cs">
+      <DependentUpon>201801162100152_order foreign key created.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801162103593_order table created.cs" />
+    <Compile Include="Migrations\201801162103593_order table created.Designer.cs">
+      <DependentUpon>201801162103593_order table created.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -336,6 +345,11 @@
     <Content Include="Views\DeliveryDrivers\Details.cshtml" />
     <Content Include="Views\DeliveryDrivers\Edit.cshtml" />
     <Content Include="Views\DeliveryDrivers\Index.cshtml" />
+    <Content Include="Views\Orders\Create.cshtml" />
+    <Content Include="Views\Orders\Delete.cshtml" />
+    <Content Include="Views\Orders\Details.cshtml" />
+    <Content Include="Views\Orders\Edit.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -360,6 +374,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801161542511_updated restaurant model.resx">
       <DependentUpon>201801161542511_updated restaurant model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801162100152_order foreign key created.resx">
+      <DependentUpon>201801162100152_order foreign key created.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801162103593_order table created.resx">
+      <DependentUpon>201801162103593_order table created.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
