@@ -1,45 +1,18 @@
-﻿@model IEnumerable<DeliverEase.Models.Customer>
+﻿@model DeliverEase.Models.CustomerViewModel
 
-@{
-    ViewBag.Title = "Index";
-}
 
-<h2>Index</h2>
+@{ string name = Model.Customer.CustomerFirstName;}
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CustomerFirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CustomerLastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CustomerAdress)
-        </th>
-        <th></th>
-    </tr>
+<div class="jumbotron">
+    <br />
+    <center><h4> Hello! @name </h4></center>
+    <br />
+</div>
+<div class="row">
+    <div class="col-md-4">
+        @Html.ActionLink("Place Order","Create","Orders")
+    </div>
+    <div class="col-md-4">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustomerFirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustomerLastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustomerAdress)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-
-</table>
+    </div>
+</div>

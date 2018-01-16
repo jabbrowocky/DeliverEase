@@ -19,7 +19,14 @@ namespace DeliverEase.Controllers
         // GET: Customers
         public ActionResult Index()
         {
-            return View(db.Customers.ToList());
+            string userId = User.Identity.GetUserId();
+            Customer cust = db.Customers.Where(c => c.UserId == userId).First();
+            CustomerViewModel cvm = new CustomerViewModel()
+            {
+                Customer = cust
+            };
+                      
+            return View(cvm);
         }
 
         // GET: Customers/Details/5

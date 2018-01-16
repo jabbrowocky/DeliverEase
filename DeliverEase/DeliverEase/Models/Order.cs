@@ -15,6 +15,8 @@ namespace DeliverEase.Models
         [ForeignKey("CustomerId")]
         public Customer customer { get; set; }
         [Display(Name = "Order info:")]
-        public List<string> OrderInfo { get; set; }
+        public List<Menu> OrderInfo { get; set; }
+        public Restaurant Selection { get; set; }
+
     }
 }

@@ -241,6 +241,10 @@
     <Compile Include="Migrations\201801162103593_order table created.Designer.cs">
       <DependentUpon>201801162103593_order table created.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801162211594_testing.cs" />
+    <Compile Include="Migrations\201801162211594_testing.Designer.cs">
+      <DependentUpon>201801162211594_testing.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -253,6 +257,7 @@
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\MenuViewModel.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderViewModel.cs" />
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -380,6 +385,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801162103593_order table created.resx">
       <DependentUpon>201801162103593_order table created.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801162211594_testing.resx">
+      <DependentUpon>201801162211594_testing.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

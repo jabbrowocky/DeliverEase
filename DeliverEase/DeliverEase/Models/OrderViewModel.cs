@@ -5,10 +5,10 @@ using System.Web;
 
 namespace DeliverEase.Models
 {
-    public class CustomerViewModel
+    public class OrderViewModel
     {
-        public Menu SelectedMenu { get; set; }
         public Customer Customer { get; set; }
-        public Order Order { get; set; }
+        public Order CustomerOrder { get; set;}
+        public IEnumerable <Menu> MenuSelection { get; set; }
     }
 }

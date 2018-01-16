@@ -33,12 +33,9 @@ namespace DeliverEase.Controllers
                 {
                     if (customer.UserId == userId)
                     {
-                        return RedirectToAction("Index","Customers");
+                        return RedirectToAction("Index", "Customers");
                     }
-                    else
-                    {
-                        return RedirectToAction("Create", "Customers");
-                    }
+                   
                 }
                 return RedirectToAction("Create", "Customers");
             }
@@ -50,10 +47,7 @@ namespace DeliverEase.Controllers
                     {
                         return RedirectToAction("Index", "Restaurants");
                     }
-                    else
-                    {
-                        return RedirectToAction("Create", "Restaurants");
-                    }
+                    
                 }
                 return RedirectToAction("Create", "Restaurants");
             }
@@ -65,10 +59,7 @@ namespace DeliverEase.Controllers
                     {
                         return RedirectToAction("Index", "DeliveryDrivers");
                     }
-                    else
-                    {
-                        return RedirectToAction("Create", "DeliveryDrivers");
-                    }
+                    
                 }
                 return RedirectToAction("Create", "DeliveryDrivers");
             }
