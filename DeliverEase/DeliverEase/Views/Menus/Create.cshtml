@@ -1,4 +1,4 @@
-﻿@model DeliverEase.Models.Menu
+﻿@model DeliverEase.Models.MenuViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -6,36 +6,32 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Menu</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.MenuItem, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Menu.MenuItem, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.MenuItem, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MenuItem, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Menu.MenuItem, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Menu.MenuItem, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ItemPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Menu.ItemPrice, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ItemPrice, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ItemPrice, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Menu.ItemPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Menu.ItemPrice, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.RestaurantId, "RestaurantId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("RestaurantId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.RestaurantId, "", new { @class = "text-danger" })
-            </div>
+           @Html.HiddenFor(model => model.Menu.RestaurantId)
         </div>
 
         <div class="form-group">
@@ -43,6 +39,12 @@
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
+        <divn class="form-group">
+            <div class ="col-md-offset-2 col-md-10">
+                <br />
+                @{ Html.ActionLink("Finish", "Index", "Restaurant", new { model = Model.Restaurant });}
+            </div>
+        </divn>
     </div>
 }
 

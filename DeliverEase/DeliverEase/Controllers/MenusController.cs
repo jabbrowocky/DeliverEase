@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DeliverEase.Models;
+using Microsoft.AspNet.Identity;
 
 namespace DeliverEase.Controllers
 {
@@ -39,8 +40,17 @@ namespace DeliverEase.Controllers
         // GET: Menus/Create
         public ActionResult Create()
         {
+            string userId = User.Identity.GetUserId();
             ViewBag.RestaurantId = new SelectList(db.Restaurants, "RestaurantId", "RestaurantName");
-            return View();
+            Restaurant rest = db.Restaurants.Where(r => r.UserId == userId).First();
+            Menu menu = new Menu();
+            menu.RestaurantId = rest.RestaurantId;
+            MenuViewModel mvm = new MenuViewModel()
+            {
+                Restaurant = rest,
+                Menu = menu
+            };
+            return View(mvm);
         }
 
         // POST: Menus/Create
@@ -54,7 +64,7 @@ namespace DeliverEase.Controllers
             {
                 db.Menus.Add(menu);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "Menus");
             }
 
             ViewBag.RestaurantId = new SelectList(db.Restaurants, "RestaurantId", "RestaurantName", menu.RestaurantId);

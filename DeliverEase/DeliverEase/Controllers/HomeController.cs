@@ -13,6 +13,7 @@ namespace DeliverEase.Controllers
     {
         public ActionResult Index()
         {
+            
             if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Index","Users");
