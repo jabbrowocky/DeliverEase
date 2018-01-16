@@ -18,7 +18,16 @@ namespace DeliverEase.Controllers
         // GET: Restaurants
         public ActionResult Index()
         {
-            return View(db.Restaurants.ToList());
+            string userId = User.Identity.GetUserId();
+            Restaurant restaurant = new Restaurant();
+            foreach (Restaurant partner in db.Restaurants)
+            {
+                if (partner.UserId == userId)
+                {
+                    restaurant = partner;
+                }
+            }
+            return View(restaurant);
         }
 
         // GET: Restaurants/Details/5
@@ -55,10 +64,10 @@ namespace DeliverEase.Controllers
                 restaurant.UserId = userId;
                 db.Restaurants.Add(restaurant);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Restaurants", restaurant);
             }
 
-            return View(restaurant);
+            return RedirectToAction("Index","Home");
         }
 
         // GET: Restaurants/Edit/5
