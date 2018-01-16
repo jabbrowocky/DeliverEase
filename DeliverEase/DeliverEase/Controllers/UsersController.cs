@@ -24,6 +24,7 @@ namespace DeliverEase.Controllers
             string userId = User.Identity.GetUserId();
             if (isAdminUser())
             {
+                
                 return View("Admin");
             }
             else if ( s[0].ToString() == "Customer" || role == "Customer")
@@ -41,13 +42,24 @@ namespace DeliverEase.Controllers
                 }
                 return RedirectToAction("Create", "Customers");
             }
-            else if (User.IsInRole("Restaurant") || role == "Restaurant")
+            else if (s[0].ToString() == "Restaurant" || role == "Restaurant")
             {
                 return View("Restaurant");
             }
-            else if (User.IsInRole("DeliveryDriver") || role == "DeliveryDriver")
+            else if (s[0].ToString() == "DeliveryDriver" || role == "DeliveryDriver")
             {
-                return View("DeliveryDriver");
+                foreach (DeliveryDriver driver in context.DeliveryDrivers)
+                {
+                    if (driver.UserId == userId)
+                    {
+                        return RedirectToAction("Index", "DeliveryDrivers");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Create", "DeliveryDrivers");
+                    }
+                }
+                return RedirectToAction("Create", "DeliveryDrivers");
             }
             return RedirectToAction("Index", "Home");
 

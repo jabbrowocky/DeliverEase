@@ -218,6 +218,10 @@
     <Compile Include="Migrations\201801161506001_don%27t break please kthx.Designer.cs">
       <DependentUpon>201801161506001_don%27t break please kthx.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801161542511_updated restaurant model.cs" />
+    <Compile Include="Migrations\201801161542511_updated restaurant model.Designer.cs">
+      <DependentUpon>201801161542511_updated restaurant model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -341,6 +345,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801161506001_don%27t break please kthx.resx">
       <DependentUpon>201801161506001_don%27t break please kthx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801161542511_updated restaurant model.resx">
+      <DependentUpon>201801161542511_updated restaurant model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

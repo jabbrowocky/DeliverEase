@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DeliverEase.Models;
+using Microsoft.AspNet.Identity;
 
 namespace DeliverEase.Controllers
 {
@@ -48,8 +49,10 @@ namespace DeliverEase.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "RestaurantId,RestaurantName")] Restaurant restaurant)
         {
+            string userId = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
+                restaurant.UserId = userId;
                 db.Restaurants.Add(restaurant);
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DeliverEase.Models;
+using Microsoft.AspNet.Identity;
 
 namespace DeliverEase.Controllers
 {
@@ -48,8 +49,10 @@ namespace DeliverEase.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "DriverId,DriverFirstName,DriverLastName")] DeliveryDriver deliveryDriver)
         {
+            string userId = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
+                deliveryDriver.UserId = userId;
                 db.DeliveryDrivers.Add(deliveryDriver);
                 db.SaveChanges();
                 return RedirectToAction("Index");
