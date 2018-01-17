@@ -1,0 +1,46 @@
+﻿@model IEnumerable<DeliverEase.Models.Menu>
+
+<h2>SelectMenuItems</h2>
+
+
+
+
+<h2>Menu</h2>
+
+<hr />
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.MenuItem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemPrice)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @Html.HiddenFor(modelItem => item.Id)
+            @Html.HiddenFor(modelItem => item.RestaurantId)
+                       <td>
+                @Html.DisplayFor(modelItem => item.MenuItem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemPrice)
+            </td>
+            <td>
+                @Html.ActionLink("Add Item", "AddItem", "Orders", new { id = item.Id }, null)
+                <br />
+                @Html.ActionLink("Remove Item","")
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.ActionLink("View Order","ViewOrders","Orders")
+
+
+

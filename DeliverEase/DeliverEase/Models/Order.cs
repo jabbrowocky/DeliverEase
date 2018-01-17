@@ -13,10 +13,14 @@ namespace DeliverEase.Models
         public int OrderId { get; set; }
         public int CustomerId { get; set; }
         [ForeignKey("CustomerId")]
-        public Customer customer { get; set; }
-        [Display(Name = "Order info:")]
+        public Customer customer { get; set; }        
         public List<Menu> OrderInfo { get; set; }
         public Restaurant Selection { get; set; }
-
+        [Display(Name = "Item Name:")]
+        public string OrderDetails { get; set; }
+        public Menu menuItemId { get; set; }
+        [Display(Name = "Item Cost:")]
+        public double OrderCost { get; set; }
+        public bool IsAccepted { get; set; } = false;
     }
 }

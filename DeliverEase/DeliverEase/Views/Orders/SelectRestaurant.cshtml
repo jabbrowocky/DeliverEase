@@ -1,0 +1,29 @@
+﻿@model IEnumerable<DeliverEase.Models.Restaurant>
+
+
+<h2>Select a Restaurant to Order From</h2>
+
+<hr />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RestaurantName)
+        </th>
+        
+       
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RestaurantName)
+            </td>
+           
+            <td>
+                @Html.ActionLink("Order From", "SelectMenuItems", new { id = item.RestaurantId})
+            </td>
+        </tr>
+    }
+
+</table>

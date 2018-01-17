@@ -9,6 +9,16 @@
         <center><h4>Hey! @name</h4></center> 
     </div>
     <div class="row">
-    @Html.ActionLink("Create Menu", "Create", "Menus")
+            <br>
+        
+            <div class="col-md-4">
+                @Html.ActionLink("Create Menu", "Create", "Menus", new { id = Model.RestaurantId }, new { @class = "btn btn-success btn-large" })
+            </div>
+            
+        <div class="col-md-4">
+            @Html.ActionLink("View/Edit Existing Menu", "Index", "Menus", new { id = Model.RestaurantId }, new { @class="btn btn-success btn-large"})
+        </div>
+        <br />
+        <br />
     </div>
 </div>

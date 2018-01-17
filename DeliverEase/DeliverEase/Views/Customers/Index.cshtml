@@ -10,9 +10,10 @@
 </div>
 <div class="row">
     <div class="col-md-4">
-        @Html.ActionLink("Place Order","Create","Orders")
+        
+        @Html.ActionLink("Place Order","Index","Orders", new { id = Model.Customer.Id }, new {@class="btn btn-success"})
     </div>
     <div class="col-md-4">
-
+        
     </div>
 </div>

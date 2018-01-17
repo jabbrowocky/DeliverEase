@@ -1,33 +1,10 @@
-﻿@model IEnumerable<DeliverEase.Models.Order>
+﻿@model DeliverEase.Models.CustomerViewModel
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.customer.UserId)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.customer.UserId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.OrderId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.OrderId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.OrderId })
-        </td>
-    </tr>
-}
-
-</table>
+<h2>Select A Restaurant</h2>
+<hr />
+@Html.ActionLink("Select","SelectRestaurant","Orders", new { @class = "btn btn-success btn-large" })
+<p> have the order information stored and accessible</p>

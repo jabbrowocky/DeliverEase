@@ -16,9 +16,9 @@ namespace DeliverEase.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Menus
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            var menus = db.Menus.Include(m => m.Restaurant);
+            var menus = db.Menus.Include(m => m.Restaurant).Where(m => m.RestaurantId == id);
             return View(menus.ToList());
         }
 

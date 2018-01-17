@@ -221,10 +221,6 @@
     <Compile Include="Migrations\201801161429002_init.Designer.cs">
       <DependentUpon>201801161429002_init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801161504138_work goddamnit.cs" />
-    <Compile Include="Migrations\201801161504138_work goddamnit.Designer.cs">
-      <DependentUpon>201801161504138_work goddamnit.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201801161506001_don%27t break please kthx.cs" />
     <Compile Include="Migrations\201801161506001_don%27t break please kthx.Designer.cs">
       <DependentUpon>201801161506001_don%27t break please kthx.cs</DependentUpon>
@@ -245,6 +241,34 @@
     <Compile Include="Migrations\201801162211594_testing.Designer.cs">
       <DependentUpon>201801162211594_testing.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801171313213_gimme a column.cs" />
+    <Compile Include="Migrations\201801171313213_gimme a column.Designer.cs">
+      <DependentUpon>201801171313213_gimme a column.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801171316081_gimme columns or gimme death.cs" />
+    <Compile Include="Migrations\201801171316081_gimme columns or gimme death.Designer.cs">
+      <DependentUpon>201801171316081_gimme columns or gimme death.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801171413417_gimme more columns.cs" />
+    <Compile Include="Migrations\201801171413417_gimme more columns.Designer.cs">
+      <DependentUpon>201801171413417_gimme more columns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801171611115_please fix my error.cs" />
+    <Compile Include="Migrations\201801171611115_please fix my error.Designer.cs">
+      <DependentUpon>201801171611115_please fix my error.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801172033059_stuff.cs" />
+    <Compile Include="Migrations\201801172033059_stuff.Designer.cs">
+      <DependentUpon>201801172033059_stuff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801172052143_k.cs" />
+    <Compile Include="Migrations\201801172052143_k.Designer.cs">
+      <DependentUpon>201801172052143_k.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801172120142_fuckingfuckingfuck.cs" />
+    <Compile Include="Migrations\201801172120142_fuckingfuckingfuck.Designer.cs">
+      <DependentUpon>201801172120142_fuckingfuckingfuck.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -257,7 +281,6 @@
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\MenuViewModel.cs" />
     <Compile Include="Models\Order.cs" />
-    <Compile Include="Models\OrderViewModel.cs" />
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -355,6 +378,9 @@
     <Content Include="Views\Orders\Details.cshtml" />
     <Content Include="Views\Orders\Edit.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\Orders\SelectRestaurant.cshtml" />
+    <Content Include="Views\Orders\SelectMenuItems.cshtml" />
+    <Content Include="Views\Orders\ViewOrders.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -371,9 +397,6 @@
     <EmbeddedResource Include="Migrations\201801161429002_init.resx">
       <DependentUpon>201801161429002_init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801161504138_work goddamnit.resx">
-      <DependentUpon>201801161504138_work goddamnit.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801161506001_don%27t break please kthx.resx">
       <DependentUpon>201801161506001_don%27t break please kthx.cs</DependentUpon>
     </EmbeddedResource>
@@ -388,6 +411,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801162211594_testing.resx">
       <DependentUpon>201801162211594_testing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801171313213_gimme a column.resx">
+      <DependentUpon>201801171313213_gimme a column.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801171316081_gimme columns or gimme death.resx">
+      <DependentUpon>201801171316081_gimme columns or gimme death.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801171413417_gimme more columns.resx">
+      <DependentUpon>201801171413417_gimme more columns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801171611115_please fix my error.resx">
+      <DependentUpon>201801171611115_please fix my error.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801172033059_stuff.resx">
+      <DependentUpon>201801172033059_stuff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801172052143_k.resx">
+      <DependentUpon>201801172052143_k.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801172120142_fuckingfuckingfuck.resx">
+      <DependentUpon>201801172120142_fuckingfuckingfuck.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

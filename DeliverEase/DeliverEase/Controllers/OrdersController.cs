@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DeliverEase.Models;
+using Microsoft.AspNet.Identity;
 
 namespace DeliverEase.Controllers
 {
@@ -17,10 +18,41 @@ namespace DeliverEase.Controllers
         // GET: Orders
         public ActionResult Index()
         {
-            var orders = db.Orders.Include(o => o.customer);
-            return View(orders.ToList());
+                      
+            
+            
+            return View();
         }
+        public ActionResult SelectRestaurant()
+        {
+            var rest = db.Restaurants.ToList();
+            return View(rest);
+        }
+        public ActionResult SelectMenuItems(int? id)
+        {
+            // string userId = User.Identity.GetUserId();
 
+            var menuItems = db.Menus.Where(m => m.RestaurantId == id).ToList();
+
+            return View(menuItems);
+        }
+        // [HttpPost]
+        public ActionResult AddItem(Menu item)
+        {
+            
+            
+            item = db.Menus.Where(m => m.Id == item.Id).First();
+            Restaurant rest = db.Restaurants.Where(r => r.RestaurantId == item.RestaurantId).First();
+            Order order = new Order();
+            order.menuItemId = item;
+            string userId = User.Identity.GetUserId();
+            order.CustomerId = db.Customers.Where(c => c.UserId == userId).First().Id;
+            order.OrderDetails = order.menuItemId.MenuItem;
+            order.OrderCost = order.menuItemId.ItemPrice;            
+            db.Orders.Add(order);
+            db.SaveChanges();
+            return RedirectToAction("SelectMenuItems", new { id = rest.RestaurantId});
+        }
         // GET: Orders/Details/5
         public ActionResult Details(int? id)
         {
@@ -48,7 +80,7 @@ namespace DeliverEase.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OrderId,CustomerId")] Order order)
+        public ActionResult Create([Bind(Include = "OrderId,CustomerId,OrderDetails,OrderCost")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -61,8 +93,19 @@ namespace DeliverEase.Controllers
             return View(order);
         }
 
-        // GET: Orders/Edit/5
-        public ActionResult Edit(int? id)
+        
+        public ActionResult ViewOrders()
+        {
+            string userId = User.Identity.GetUserId();
+            Customer customer = db.Customers.Where(c => c.UserId == userId).First();
+            var order = db.Orders
+                .Where(o => o.CustomerId == customer.Id)
+                .Where(o => o.IsAccepted == false)
+                .ToList();
+            
+            return View(order);
+        }
+        public ActionResult Edit(int? id, int? custId)
         {
             if (id == null)
             {

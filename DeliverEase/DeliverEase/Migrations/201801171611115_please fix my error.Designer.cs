@@ -7,13 +7,13 @@ namespace DeliverEase.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class workgoddamnit : IMigrationMetadata
+    public sealed partial class pleasefixmyerror : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(workgoddamnit));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(pleasefixmyerror));
         
         string IMigrationMetadata.Id
         {
-            get { return "201801161504138_work goddamnit"; }
+            get { return "201801171611115_please fix my error"; }
         }
         
         string IMigrationMetadata.Source
