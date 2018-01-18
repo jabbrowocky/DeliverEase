@@ -18,7 +18,7 @@ namespace DeliverEase.Models
         public string UserId { get; set; }
         [ForeignKey("UserId")]
         public virtual ApplicationUser ApplicationUser { get; set; }
-        public bool HasDelivery { get; set; }
+        public bool HasDelivery { get; set; } = false;
 
     }
 }

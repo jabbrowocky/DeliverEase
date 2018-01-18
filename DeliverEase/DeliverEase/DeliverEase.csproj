@@ -206,6 +206,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\DeliveriesController.cs" />
     <Compile Include="Controllers\DeliveryDriversController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -277,10 +278,39 @@
     <Compile Include="Migrations\201801180324299_dear god.Designer.cs">
       <DependentUpon>201801180324299_dear god.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801180434029_eh.cs" />
+    <Compile Include="Migrations\201801180434029_eh.Designer.cs">
+      <DependentUpon>201801180434029_eh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801180517401_new table hype!.cs" />
+    <Compile Include="Migrations\201801180517401_new table hype!.Designer.cs">
+      <DependentUpon>201801180517401_new table hype!.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801180605383_holy shit I hate this.cs" />
+    <Compile Include="Migrations\201801180605383_holy shit I hate this.Designer.cs">
+      <DependentUpon>201801180605383_holy shit I hate this.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801180608297_come tf on.cs" />
+    <Compile Include="Migrations\201801180608297_come tf on.Designer.cs">
+      <DependentUpon>201801180608297_come tf on.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801180610436_please work ffs.cs" />
+    <Compile Include="Migrations\201801180610436_please work ffs.Designer.cs">
+      <DependentUpon>201801180610436_please work ffs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801180627194_testy.cs" />
+    <Compile Include="Migrations\201801180627194_testy.Designer.cs">
+      <DependentUpon>201801180627194_testy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801180630334_I%27m going insane.cs" />
+    <Compile Include="Migrations\201801180630334_I%27m going insane.Designer.cs">
+      <DependentUpon>201801180630334_I%27m going insane.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\CustomerViewModel.cs" />
+    <Compile Include="Models\Delivery.cs" />
     <Compile Include="Models\DeliveryDriver.cs" />
     <Compile Include="Models\DriverViewModel.cs" />
     <Compile Include="Models\GoogleApiModel.cs" />
@@ -391,6 +421,11 @@
     <Content Include="Views\Orders\ViewOrders.cshtml" />
     <Content Include="Views\DeliveryDrivers\PendingDeliveries.cshtml" />
     <Content Include="Views\Orders\SubmitOrder.cshtml" />
+    <Content Include="Views\DeliveryDrivers\Deliveries\Create.cshtml" />
+    <Content Include="Views\DeliveryDrivers\Deliveries\Delete.cshtml" />
+    <Content Include="Views\DeliveryDrivers\Deliveries\Details.cshtml" />
+    <Content Include="Views\DeliveryDrivers\Deliveries\Edit.cshtml" />
+    <Content Include="Views\DeliveryDrivers\Deliveries\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -448,6 +483,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801180324299_dear god.resx">
       <DependentUpon>201801180324299_dear god.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801180434029_eh.resx">
+      <DependentUpon>201801180434029_eh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801180517401_new table hype!.resx">
+      <DependentUpon>201801180517401_new table hype!.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801180605383_holy shit I hate this.resx">
+      <DependentUpon>201801180605383_holy shit I hate this.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801180608297_come tf on.resx">
+      <DependentUpon>201801180608297_come tf on.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801180610436_please work ffs.resx">
+      <DependentUpon>201801180610436_please work ffs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801180627194_testy.resx">
+      <DependentUpon>201801180627194_testy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801180630334_I%27m going insane.resx">
+      <DependentUpon>201801180630334_I%27m going insane.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

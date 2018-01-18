@@ -7,116 +7,116 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DeliverEase.Models;
-using Microsoft.AspNet.Identity;
 
 namespace DeliverEase.Controllers
 {
-    public class DeliveryDriversController : Controller
+    public class DeliveriesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: DeliveryDrivers
+        // GET: Deliveries
         public ActionResult Index()
         {
-            string uId = User.Identity.GetUserId();
-            DeliveryDriver dri = db.DeliveryDrivers.Where(d => d.UserId == uId).First();
-            return View(dri);
-              
+
+            return View();
+            
         }
 
-        // GET: DeliveryDrivers/Details/5
+        // GET: Deliveries/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DeliveryDriver deliveryDriver = db.DeliveryDrivers.Find(id);
-            if (deliveryDriver == null)
+            Delivery delivery = db.Deliveries.Find(id);
+            if (delivery == null)
             {
                 return HttpNotFound();
             }
-            return View(deliveryDriver);
+            return View(delivery);
         }
 
-        // GET: DeliveryDrivers/Create
+        // GET: Deliveries/Create
         public ActionResult Create()
         {
+            ViewBag.CustomerId = new SelectList(db.Orders, "OrderId", "OrderDetails");
             return View();
         }
 
-        // POST: DeliveryDrivers/Create
+        // POST: Deliveries/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "DriverId,DriverFirstName,DriverLastName")] DeliveryDriver deliveryDriver)
+        public ActionResult Create([Bind(Include = "Id,CustomerId")] Delivery delivery)
         {
-            string userId = User.Identity.GetUserId();
             if (ModelState.IsValid)
             {
-                deliveryDriver.UserId = userId;
-                db.DeliveryDrivers.Add(deliveryDriver);
+                db.Deliveries.Add(delivery);
                 db.SaveChanges();
-                return RedirectToAction("Index","DeliveryDrivers", new { m = deliveryDriver });
+                return RedirectToAction("Index");
             }
 
-            return View("Index");
+            ViewBag.CustomerId = new SelectList(db.Orders, "OrderId", "OrderDetails", delivery.CustomerId);
+            return View(delivery);
         }
 
-        // GET: DeliveryDrivers/Edit/5
+        // GET: Deliveries/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DeliveryDriver deliveryDriver = db.DeliveryDrivers.Find(id);
-            if (deliveryDriver == null)
+            Delivery delivery = db.Deliveries.Find(id);
+            if (delivery == null)
             {
                 return HttpNotFound();
             }
-            return View(deliveryDriver);
+            ViewBag.CustomerId = new SelectList(db.Orders, "OrderId", "OrderDetails", delivery.CustomerId);
+            return View(delivery);
         }
 
-        // POST: DeliveryDrivers/Edit/5
+        // POST: Deliveries/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "DriverId,DriverFirstName,DriverLastName")] DeliveryDriver deliveryDriver)
+        public ActionResult Edit([Bind(Include = "Id,CustomerId")] Delivery delivery)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(deliveryDriver).State = EntityState.Modified;
+                db.Entry(delivery).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(deliveryDriver);
+            ViewBag.CustomerId = new SelectList(db.Orders, "OrderId", "OrderDetails", delivery.CustomerId);
+            return View(delivery);
         }
 
-        // GET: DeliveryDrivers/Delete/5
+        // GET: Deliveries/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DeliveryDriver deliveryDriver = db.DeliveryDrivers.Find(id);
-            if (deliveryDriver == null)
+            Delivery delivery = db.Deliveries.Find(id);
+            if (delivery == null)
             {
                 return HttpNotFound();
             }
-            return View(deliveryDriver);
+            return View(delivery);
         }
 
-        // POST: DeliveryDrivers/Delete/5
+        // POST: Deliveries/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            DeliveryDriver deliveryDriver = db.DeliveryDrivers.Find(id);
-            db.DeliveryDrivers.Remove(deliveryDriver);
+            Delivery delivery = db.Deliveries.Find(id);
+            db.Deliveries.Remove(delivery);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

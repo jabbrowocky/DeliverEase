@@ -60,11 +60,12 @@ namespace DeliverEase.Controllers
                 if(order.CustomerId == id)
                 {
                     order.IsSubmitted = true;
+                                  
                     
                 }
             }
             db.SaveChanges();
-            return View();
+            return View("SubmitOrder");
         }
         // GET: Orders/Details/5
         public ActionResult Details(int? id)
