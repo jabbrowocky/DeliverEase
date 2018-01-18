@@ -22,5 +22,6 @@ namespace DeliverEase.Models
         [Display(Name = "Item Cost:")]
         public double OrderCost { get; set; }
         public bool IsAccepted { get; set; } = false;
+        public bool IsSubmitted { get; set; } = false;
     }
 }

@@ -7,5 +7,6 @@ namespace DeliverEase.Models
 {
     public class DriverViewModel
     {
+        
     }
 }

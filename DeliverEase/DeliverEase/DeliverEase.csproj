@@ -269,6 +269,14 @@
     <Compile Include="Migrations\201801172120142_fuckingfuckingfuck.Designer.cs">
       <DependentUpon>201801172120142_fuckingfuckingfuck.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801180322543_man,fuckthis.cs" />
+    <Compile Include="Migrations\201801180322543_man,fuckthis.Designer.cs">
+      <DependentUpon>201801180322543_man,fuckthis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801180324299_dear god.cs" />
+    <Compile Include="Migrations\201801180324299_dear god.Designer.cs">
+      <DependentUpon>201801180324299_dear god.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -381,6 +389,8 @@
     <Content Include="Views\Orders\SelectRestaurant.cshtml" />
     <Content Include="Views\Orders\SelectMenuItems.cshtml" />
     <Content Include="Views\Orders\ViewOrders.cshtml" />
+    <Content Include="Views\DeliveryDrivers\PendingDeliveries.cshtml" />
+    <Content Include="Views\Orders\SubmitOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -432,6 +442,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801172120142_fuckingfuckingfuck.resx">
       <DependentUpon>201801172120142_fuckingfuckingfuck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801180322543_man,fuckthis.resx">
+      <DependentUpon>201801180322543_man,fuckthis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801180324299_dear god.resx">
+      <DependentUpon>201801180324299_dear god.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

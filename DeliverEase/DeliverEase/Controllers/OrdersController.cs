@@ -38,7 +38,7 @@ namespace DeliverEase.Controllers
         }
         // [HttpPost]
         public ActionResult AddItem(Menu item)
-        {
+            {
             
             
             item = db.Menus.Where(m => m.Id == item.Id).First();
@@ -52,6 +52,19 @@ namespace DeliverEase.Controllers
             db.Orders.Add(order);
             db.SaveChanges();
             return RedirectToAction("SelectMenuItems", new { id = rest.RestaurantId});
+        }
+        public ActionResult SubmitOrder(int? id)
+        {
+            foreach(Order order in db.Orders)
+            {
+                if(order.CustomerId == id)
+                {
+                    order.IsSubmitted = true;
+                    
+                }
+            }
+            db.SaveChanges();
+            return View();
         }
         // GET: Orders/Details/5
         public ActionResult Details(int? id)
@@ -96,14 +109,19 @@ namespace DeliverEase.Controllers
         
         public ActionResult ViewOrders()
         {
-            string userId = User.Identity.GetUserId();
-            Customer customer = db.Customers.Where(c => c.UserId == userId).First();
-            var order = db.Orders
-                .Where(o => o.CustomerId == customer.Id)
-                .Where(o => o.IsAccepted == false)
-                .ToList();
-            
-            return View(order);
+            if (User.Identity.IsAuthenticated)
+            {
+                string userId = User.Identity.GetUserId();
+                Customer customer = db.Customers.Where(c => c.UserId == userId).First();
+                var order = db.Orders
+                    .Where(o => o.CustomerId == customer.Id)
+                    .Where(o => o.IsAccepted == false)
+                    .Where(o => o.IsSubmitted == false)
+                    .ToList();
+
+                return View(order);
+            }
+            return RedirectToAction("Login","Account");
         }
         public ActionResult Edit(int? id, int? custId)
         {
@@ -153,14 +171,13 @@ namespace DeliverEase.Controllers
         }
 
         // POST: Orders/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+      
         public ActionResult DeleteConfirmed(int id)
         {
             Order order = db.Orders.Find(id);
             db.Orders.Remove(order);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("ViewOrders","Orders");
         }
 
         protected override void Dispose(bool disposing)

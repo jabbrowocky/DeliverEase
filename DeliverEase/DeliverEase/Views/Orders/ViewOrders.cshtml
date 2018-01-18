@@ -2,8 +2,9 @@
 
 
 <h2>Review Order</h2>
-\hr />
+<hr />
 <table class="table">
+    @{ int modelId = 0;}
     <tr>
 
         <th>
@@ -14,20 +15,38 @@
         </th>
         <th></th>
     </tr>
-
+    
+        
     @foreach (var item in Model)
     {
+
+
         <tr>
             
             <td>
                 @Html.DisplayFor(modelItem => item.OrderDetails)
+                
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.OrderCost)
+               
             </td>
-            
+            <td>
+                @Html.ActionLink("Remove Item", "DeleteConfirmed", "Orders", new { id = item.OrderId }, new { @class = "btn btn-danger btn-sm" })
+            </td>
         </tr>
+
     }
-
+   
 </table>
+@{double test = 0; }
 
+
+    @foreach (var item in Model)
+{
+        modelId = item.CustomerId;
+        test += item.OrderCost;
+        
+   
+}
+<div class="text-right"><p class="lead"> Total: $@test</p> @Html.ActionLink("Submit", "SubmitOrder", "Orders", new { id = modelId }, new { @class = "btn btn-success" })</div>
