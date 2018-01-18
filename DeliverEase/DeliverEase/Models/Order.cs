@@ -22,7 +22,11 @@ namespace DeliverEase.Models
         [Display(Name = "Item Cost:")]
         public double OrderCost { get; set; }
         public bool IsAccepted { get; set; } = false;
-        public bool IsSubmitted { get; set; } = false;        
-        public int DeliveryId { get; set; }
+        public bool IsSubmitted { get; set; } = false;
+        public bool IsAdded { get; set; } = false;     
+        public int ToDeliverId { get; set; }
+        [ForeignKey("ToDeliverId")]
+        public ToDeliver deliver { get; set; }   
+        
     }
 }

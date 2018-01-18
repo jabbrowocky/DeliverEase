@@ -41,6 +41,6 @@ namespace DeliverEase.Models
 
         public System.Data.Entity.DbSet<DeliverEase.Models.Order> Orders { get; set; }
 
-        public System.Data.Entity.DbSet<DeliverEase.Models.Delivery> Deliveries { get; set; }
+        public System.Data.Entity.DbSet<DeliverEase.Models.ToDeliver> ToDelivers { get; set; }
     }
 }

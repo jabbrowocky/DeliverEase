@@ -48,9 +48,39 @@ namespace DeliverEase.Controllers
             string userId = User.Identity.GetUserId();
             order.CustomerId = db.Customers.Where(c => c.UserId == userId).First().Id;
             order.OrderDetails = order.menuItemId.MenuItem;
-            order.OrderCost = order.menuItemId.ItemPrice;            
+            order.OrderCost = order.menuItemId.ItemPrice;
+            bool deliveryExisted = false;
+            foreach (ToDeliver del in db.ToDelivers)
+            {
+                if (del.CustomerId == order.CustomerId && del.IsComplete == false && order.IsSubmitted == false && order.IsAdded == false)
+                {
+                    order.ToDeliverId = del.Id;
+                    deliveryExisted = true;
+                    break;
+                    
+                }
+                //else
+                //{
+                //    ToDeliver delivery = new ToDeliver();
+                //    delivery.CustomerId = order.CustomerId;
+                //    db.ToDelivers.Add(delivery);
+                //    db.SaveChanges();
+                //    order.ToDeliverId = delivery.Id;
+                //}
+            }
+            if (db.ToDelivers.Count().Equals(0) || !deliveryExisted)
+            {
+                ToDeliver delivery = new ToDeliver();
+                delivery.CustomerId = order.CustomerId;
+                db.ToDelivers.Add(delivery);
+                db.SaveChanges();
+                order.ToDeliverId = delivery.Id;
+            }
+            order.IsAdded = true;
             db.Orders.Add(order);
+
             db.SaveChanges();
+
             return RedirectToAction("SelectMenuItems", new { id = rest.RestaurantId});
         }
         public ActionResult SubmitOrder(int? id)
@@ -60,8 +90,8 @@ namespace DeliverEase.Controllers
                 if(order.CustomerId == id)
                 {
                     order.IsSubmitted = true;
-                                  
-                    
+                    ToDeliver del = db.ToDelivers.Where(d => d.Id == order.ToDeliverId).First();
+                    del.IsComplete = true;
                 }
             }
             db.SaveChanges();
