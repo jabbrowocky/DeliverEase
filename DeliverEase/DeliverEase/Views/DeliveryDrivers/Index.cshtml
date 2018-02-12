@@ -1,7 +1,6 @@
 ﻿@model DeliverEase.Models.DeliveryDriver
-<h4>look mom we made it!</h4>
 
-<div>more to come</div>
+<div class="jumbotron text-center">Welcome @Model.DriverFirstName</div>
 <h1 class="lead"> Available Deliveries</h1>
 <hr />
-@Html.ActionLink("View", "Index", "ToDelivers", new { id = Model.DriverId}, new { @class = "btn btn-success" })
+@Html.ActionLink("View", "PendingDeliveries", "DeliveryDriver",  new { @class = "btn btn-success" })

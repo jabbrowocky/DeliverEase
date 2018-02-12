@@ -1,16 +1,40 @@
-﻿@model DeliverEase.Models.Order
+﻿@model DeliverEase.Models.DriverViewModel
 
 
 <h2>PendingDeliveries</h2>
 
-<table class="table-responsive">
-    @*<tr>
-        <th>          
+<table class="table table-hover table-responsive">
+    <tbody>
+    <tr>
+        <th>
+           Customer Name
         </th>
-    </tr>*@
+        <th>
+           Customer Address
+        </th>
+        <th>
+           Order Cost
+        </th>
+      
+    </tr>
+    @foreach (var del in Model.PendingDels) {
+    
+    <tr>
+        <td>
+            @del.CustomerName
+        </td>
+        <td>
+            @del.CustomerAddress
+        </td>
+        <td>
+            $@del.OrderCost
+        </td>
+        <td>
+            @Html.ActionLink("View Details","ViewDel","DeliveryDrivers", new { id = del.Id }, new { @class = "btn btn-success btn-sm" })
+        </td>
+    </tr>
 
-
-
-
-
+    
+    }
+    </tbody>
 </table>

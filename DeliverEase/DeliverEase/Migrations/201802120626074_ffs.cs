@@ -3,16 +3,16 @@ namespace DeliverEase.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class awesome : DbMigration
+    public partial class ffs : DbMigration
     {
         public override void Up()
         {
-            AddColumn("dbo.ToDelivers", "IsComplete", c => c.Boolean(nullable: false));
+            DropColumn("dbo.Orders", "IsAccepted");
         }
         
         public override void Down()
         {
-            DropColumn("dbo.ToDelivers", "IsComplete");
+            AddColumn("dbo.Orders", "IsAccepted", c => c.Boolean(nullable: false));
         }
     }
 }

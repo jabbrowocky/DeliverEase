@@ -20,8 +20,8 @@ namespace DeliverEase.Models
         public string OrderDetails { get; set; }
         public Menu menuItemId { get; set; }
         [Display(Name = "Item Cost:")]
-        public double OrderCost { get; set; }
-        public bool IsAccepted { get; set; } = false;
+        public decimal OrderCost { get; set; }
+        
         public bool IsSubmitted { get; set; } = false;
         public bool IsAdded { get; set; } = false;     
         public int ToDeliverId { get; set; }

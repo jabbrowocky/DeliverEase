@@ -18,7 +18,7 @@ namespace DeliverEase.Controllers
         public ActionResult Index()
         {
             
-            return View(db.ToDelivers.ToList());
+            return View(db.ToDelivers.Where(u=>u.IsComplete == true).ToList());
         }
 
         // GET: ToDelivers/Details/5

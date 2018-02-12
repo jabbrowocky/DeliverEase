@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Owin;
+using Stripe;
 
 [assembly: OwinStartupAttribute(typeof(DeliverEase.Startup))]
 namespace DeliverEase
@@ -11,8 +12,11 @@ namespace DeliverEase
     {
         public void Configuration(IAppBuilder app)
         {
+            KeyManager manager = new KeyManager();
+            var key = manager.StripeKey;
             ConfigureAuth(app);
             createRolesandUsers();
+            StripeConfiguration.SetApiKey(key);
         }
         private void createRolesandUsers()
         {

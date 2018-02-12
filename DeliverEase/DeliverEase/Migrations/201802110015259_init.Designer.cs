@@ -7,13 +7,13 @@ namespace DeliverEase.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class awesome : IMigrationMetadata
+    public sealed partial class init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(awesome));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(init));
         
         string IMigrationMetadata.Id
         {
-            get { return "201801181526233_awesome!"; }
+            get { return "201802110015259_init"; }
         }
         
         string IMigrationMetadata.Source

@@ -14,7 +14,7 @@ namespace DeliverEase.Models
         [Display(Name ="Item Description")]
         public string MenuItem { get; set; }
         [Display(Name = "Item Price")]
-        public double ItemPrice { get; set; }
+        public decimal ItemPrice { get; set; }
         public int RestaurantId {get;set;}
         [ForeignKey(name: "RestaurantId")]
         public Restaurant Restaurant { get;set;}

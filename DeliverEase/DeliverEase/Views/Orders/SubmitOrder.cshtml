@@ -1,9 +1,21 @@
-﻿@model DeliverEase.Models.Customer
+﻿@model DeliverEase.Models.PaymentModel
 <h2>Submit Order</h2>
 
 <h4>One more thing...</h4>
 
 <h4 class="lead">Payment details:</h4>
 <br />
-<div>Stripe to be implemented in a future iteration</div>
-@Html.ActionLink("Home", "Index", "Home", new {@class="btn btn-success btn-lg" })
+<div><form action="/Orders/Charge" method="POST">
+    <article>
+        <label>Customer: @Model.Cust.CustomerFirstName @Model.Cust.CustomerLastName</label><br />
+        <label>Total: @Model.Del.OrderCost</label>
+    </article>
+    @{ decimal test = Model.Del.OrderCost * 100;}
+    <script src="//checkout.stripe.com/v2/checkout.js"
+            class="stripe-button"
+            data-key="pk_test_h41gcHIXc6yJamvRjp5pWiJZ"
+            data-locale="auto"
+            data-description="Sample Charge"
+            data-amount="@test">
+    </script>
+</form></div>

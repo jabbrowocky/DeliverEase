@@ -39,7 +39,7 @@
     }
    
 </table>
-@{double test = 0; }
+@{decimal test = 0; }
 
 
     @foreach (var item in Model)
@@ -49,4 +49,4 @@
         
    
 }
-<div class="text-right"><p class="lead"> Total: $@test</p> @Html.ActionLink("Submit", "SubmitOrder", "Orders", new { id = modelId }, new { @class = "btn btn-success" })</div>
+<div class="text-right"><p class="lead"> Total: $@test</p> @Html.ActionLink("Proceed To Pay", "SubmitOrder", "Orders", new { id = modelId }, new { @class = "btn btn-success btn-sm" })</div>

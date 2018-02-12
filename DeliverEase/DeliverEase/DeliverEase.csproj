@@ -85,8 +85,13 @@
       <HintPath>..\packages\RestSharp.106.2.1\lib\net452\RestSharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Stripe.net, Version=12.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stripe.net.12.1.0\lib\net45\Stripe.net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.4.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
@@ -218,17 +223,18 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="GoogleApiHelper.cs" />
-    <Compile Include="Migrations\201801181412414_init.cs" />
-    <Compile Include="Migrations\201801181412414_init.Designer.cs">
-      <DependentUpon>201801181412414_init.cs</DependentUpon>
+    <Compile Include="KeyManager.cs" />
+    <Compile Include="Migrations\201802110015259_init.cs" />
+    <Compile Include="Migrations\201802110015259_init.Designer.cs">
+      <DependentUpon>201802110015259_init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801181504391_k.cs" />
-    <Compile Include="Migrations\201801181504391_k.Designer.cs">
-      <DependentUpon>201801181504391_k.cs</DependentUpon>
+    <Compile Include="Migrations\201802110639159_added rest to delivery.cs" />
+    <Compile Include="Migrations\201802110639159_added rest to delivery.Designer.cs">
+      <DependentUpon>201802110639159_added rest to delivery.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801181526233_awesome!.cs" />
-    <Compile Include="Migrations\201801181526233_awesome!.Designer.cs">
-      <DependentUpon>201801181526233_awesome!.cs</DependentUpon>
+    <Compile Include="Migrations\201802120626074_ffs.cs" />
+    <Compile Include="Migrations\201802120626074_ffs.Designer.cs">
+      <DependentUpon>201802120626074_ffs.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -241,7 +247,9 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\MenuViewModel.cs" />
+    <Compile Include="Models\NavigationModel.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\PaymentModel.cs" />
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\ToDeliver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -263,6 +271,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Keys\Keys.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Geocode.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -350,6 +359,8 @@
     <Content Include="Views\ToDelivers\Details.cshtml" />
     <Content Include="Views\ToDelivers\Edit.cshtml" />
     <Content Include="Views\ToDelivers\Index.cshtml" />
+    <Content Include="Views\DeliveryDrivers\ViewDel.cshtml" />
+    <Content Include="Views\DeliveryDrivers\AcceptDel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -363,14 +374,14 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201801181412414_init.resx">
-      <DependentUpon>201801181412414_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201802110015259_init.resx">
+      <DependentUpon>201802110015259_init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801181504391_k.resx">
-      <DependentUpon>201801181504391_k.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201802110639159_added rest to delivery.resx">
+      <DependentUpon>201802110639159_added rest to delivery.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801181526233_awesome!.resx">
-      <DependentUpon>201801181526233_awesome!.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201802120626074_ffs.resx">
+      <DependentUpon>201802120626074_ffs.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

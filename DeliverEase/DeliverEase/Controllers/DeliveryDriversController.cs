@@ -20,8 +20,59 @@ namespace DeliverEase.Controllers
         {
             string uId = User.Identity.GetUserId();
             DeliveryDriver dri = db.DeliveryDrivers.Where(d => d.UserId == uId).First();
+            if (dri.HasDelivery)
+            {
+                dri = db.DeliveryDrivers.Where(d => d.UserId == uId).Include(u => u.Delivery).FirstOrDefault();
+                return RedirectToAction("AcceptDel", new { id = dri.Delivery.Id });
+            }
             return View(dri);
               
+        }
+        public ActionResult AcceptDel(int? id)
+        {
+            string uId = User.Identity.GetUserId();
+            DeliveryDriver drivey = db.DeliveryDrivers.Where(u => u.UserId == uId).FirstOrDefault();
+            drivey.HasDelivery = true;
+            ToDeliver del = db.ToDelivers.Where(u => u.Id == id).Include(u=>u.Rest).Include(u=>u.Items).FirstOrDefault();
+            del.IsAccepted = true;
+            drivey.Delivery = del;
+            db.SaveChanges();
+            NavigationModel model = new NavigationModel()
+            {
+                Delivery = del,
+                Driver = drivey
+
+            };
+            return View(model);
+        }
+        public ActionResult CompleteDel(int? id)
+        {
+            string uId = User.Identity.GetUserId();
+            DeliveryDriver drivey = db.DeliveryDrivers.Where(u => u.UserId == uId).Include(u=>u.Delivery).First();
+            drivey.HasDelivery = false;
+            drivey.Delivery.IsDelivered = true;
+            drivey.Delivery = null;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult PendingDeliveries()
+        {
+            string uId = User.Identity.GetUserId();
+            DriverViewModel model = new DriverViewModel()
+            {
+                Driver = db.DeliveryDrivers.Where(i => i.UserId == uId).First(),
+                PendingDels = db.ToDelivers.Where(u => u.IsComplete == true).Where(u=>u.IsAccepted == false).Where(u=>u.IsDelivered == false).Include(u => u.Items).ToList()
+
+            };
+            
+            
+            return View(model);
+        }
+        public ActionResult ViewDel (int? id)
+        {
+            ToDeliver del = db.ToDelivers.Where(u => u.Id == id).Where(u => u.IsComplete == true).Include(u=>u.Items).Include( u => u.Rest).First();
+            
+            return View(del);
         }
 
         // GET: DeliveryDrivers/Details/5

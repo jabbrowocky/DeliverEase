@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using DeliverEase.Models;
 using Microsoft.AspNet.Identity;
+using Stripe.net;
+using Stripe;
 
 namespace DeliverEase.Controllers
 {
@@ -42,7 +44,7 @@ namespace DeliverEase.Controllers
             
             
             item = db.Menus.Where(m => m.Id == item.Id).First();
-            Restaurant rest = db.Restaurants.Where(r => r.RestaurantId == item.RestaurantId).First();
+            Restaurant resty = db.Restaurants.Where(r => r.RestaurantId == item.RestaurantId).First();
             Order order = new Order();
             order.menuItemId = item;
             string userId = User.Identity.GetUserId();
@@ -55,23 +57,19 @@ namespace DeliverEase.Controllers
                 if (del.CustomerId == order.CustomerId && del.IsComplete == false && order.IsSubmitted == false && order.IsAdded == false)
                 {
                     order.ToDeliverId = del.Id;
+                    del.OrderCost += order.OrderCost;
                     deliveryExisted = true;
                     break;
                     
                 }
-                //else
-                //{
-                //    ToDeliver delivery = new ToDeliver();
-                //    delivery.CustomerId = order.CustomerId;
-                //    db.ToDelivers.Add(delivery);
-                //    db.SaveChanges();
-                //    order.ToDeliverId = delivery.Id;
-                //}
+               
             }
             if (db.ToDelivers.Count().Equals(0) || !deliveryExisted)
             {
                 ToDeliver delivery = new ToDeliver();
                 delivery.CustomerId = order.CustomerId;
+                delivery.OrderCost = order.OrderCost;
+                delivery.Rest = resty;
                 db.ToDelivers.Add(delivery);
                 db.SaveChanges();
                 order.ToDeliverId = delivery.Id;
@@ -81,21 +79,55 @@ namespace DeliverEase.Controllers
 
             db.SaveChanges();
 
-            return RedirectToAction("SelectMenuItems", new { id = rest.RestaurantId});
+            return RedirectToAction("SelectMenuItems", new { id = resty.RestaurantId});
         }
         public ActionResult SubmitOrder(int? id)
         {
-            foreach(Order order in db.Orders)
+           
+            PaymentModel model = new PaymentModel();
+            model.Del = db.ToDelivers.Where(u => u.CustomerId == id).Where(u=>u.IsComplete == false).Include(u=>u.Rest).FirstOrDefault();
+            model.Cust = db.Customers.Where(u => u.Id == id).FirstOrDefault();
+            model.Del.CustomerName = model.Cust.CustomerFirstName + " " + model.Cust.CustomerLastName;
+            model.Del.CustomerAddress = model.Cust.CustomerAdress;
+            foreach (Order order in db.Orders)
             {
                 if(order.CustomerId == id)
                 {
                     order.IsSubmitted = true;
-                    ToDeliver del = db.ToDelivers.Where(d => d.Id == order.ToDeliverId).First();
-                    del.IsComplete = true;
                 }
             }
+            model.Del.Items = db.Orders.Where(u => u.ToDeliverId == model.Del.Id).Where(d => d.IsSubmitted == false).ToList();
+            model.Del.IsComplete = true;
+                                  
+            db.Entry(model.Del).State = EntityState.Modified;
             db.SaveChanges();
-            return View("SubmitOrder");
+            return View("SubmitOrder", model);
+        }
+        public ActionResult Charge(string stripeEmail, string stripeToken)
+        {
+            string userId = User.Identity.GetUserId();
+            Customer cust = db.Customers.Where(u => u.UserId == userId).FirstOrDefault();
+            ToDeliver Del = db.ToDelivers.Where(i => i.CustomerId == cust.Id).FirstOrDefault();
+            var customers = new StripeCustomerService();
+            var charges = new StripeChargeService();
+           
+            
+            var customer = customers.Create(new StripeCustomerCreateOptions
+            {
+                Email = stripeEmail,
+                SourceToken = stripeToken
+            });
+            decimal amount = Del.OrderCost * 100;
+            int Total = Decimal.ToInt32(amount);
+            var charge = charges.Create(new StripeChargeCreateOptions
+            {
+                Amount = Total,
+                Description = "Sample Charge",
+                Currency = "usd",
+                CustomerId = customer.Id
+            });           
+            
+            return RedirectToAction("Index", "Home");
         }
         // GET: Orders/Details/5
         public ActionResult Details(int? id)
@@ -146,7 +178,7 @@ namespace DeliverEase.Controllers
                 Customer customer = db.Customers.Where(c => c.UserId == userId).First();
                 var order = db.Orders
                     .Where(o => o.CustomerId == customer.Id)
-                    .Where(o => o.IsAccepted == false)
+                  
                     .Where(o => o.IsSubmitted == false)
                     .ToList();
 
@@ -206,6 +238,8 @@ namespace DeliverEase.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Order order = db.Orders.Find(id);
+            ToDeliver del = db.ToDelivers.Where(u => u.CustomerId == order.CustomerId).Where(u => u.IsComplete == false).FirstOrDefault();
+            del.OrderCost -= order.OrderCost;
             db.Orders.Remove(order);
             db.SaveChanges();
             return RedirectToAction("ViewOrders","Orders");
