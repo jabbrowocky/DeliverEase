@@ -82,26 +82,33 @@
     <div id="floating-panel">
         <strong>Start:</strong>
         <select id="start">
-            <option value="4554 S 14th St Milwaukee Wi">Current Location</option>
+            <option value="">----</option>
+            <option value="" id="cur">Current Location</option>
             <option value="@Model.Delivery.Rest.RestaurantAddress">Restaurant</option>
-            <option value="@Model.Delivery.CustomerAddress">Customer</option>
+            
             
         </select>
         <br>
         <strong>End:</strong>
-        <select id="end">
-            <option value="4554 S 14th St Milwaukee Wi">Current Location</option>
+        <select id="end">            
             <option value="@Model.Delivery.Rest.RestaurantAddress">Restaurant</option>
             <option value="@Model.Delivery.CustomerAddress">Customer</option>
             
         </select>
+        <br />
+        <btn class="btn btn-primary btn-sm" onclick="geocodeCurrent()">Set Location</btn>
     </div>
     <div class="row">
         
         <div id="right-panel"></div>
-
+        
         <div id="map"></div>
-        <div>@Html.ActionLink("Complete","CompleteDel", new { id = Model.Delivery.Id }, new { @class = "btn btn-success btn-sm" })</div>
+        <br />
+        <div class="text-center panel col-md-offset-7" style="width: 200px">
+        <p style="font-size: 20px">Complete Delivery</p>
+        <div>@Html.ActionLink("Finish","CompleteDel", new { id = Model.Delivery.Id }, new { @class = "btn btn-success btn-lg" })</div>
+            <br />
+        </div>
     </div> 
     @section scripts{
     <script>
@@ -124,6 +131,48 @@
         };
         document.getElementById('start').addEventListener('change', onChangeHandler);
         document.getElementById('end').addEventListener('change', onChangeHandler);
+      }
+      function geocodeCurrent() {
+          var geocoder = new google.maps.Geocoder;
+
+          if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(function (position) {
+                  var pos = {
+                      lat: position.coords.latitude,
+                      lng: position.coords.longitude
+                  };
+                  geocoder.geocode({ 'location': pos }, function (results, status) {
+                      if (status === 'OK') {
+                          if (results[0]) {
+                             
+                              var element = document.getElementById('cur');
+                              element.value = results[0].formatted_address;
+                              
+                          } else {
+                              window.alert('No results found');
+                          }
+                      } else {
+                          window.alert('Geocoder failed due to: ' + status);
+                      }
+                  });
+
+                 
+              }, function () {
+                  handleLocationError(true, infoWindow, map.getCenter());
+              });
+          } else {
+              // Browser doesn't support Geolocation
+              handleLocationError(false, infoWindow, map.getCenter());
+          }
+
+      }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+          infoWindow.setPosition(pos);
+          infoWindow.setContent(browserHasGeolocation ?
+                                'Error: The Geolocation service failed.' :
+                                'Error: Your browser doesn\'t support geolocation.');
+          infoWindow.open(map);
       }
 
       function calculateAndDisplayRoute(directionsService, directionsDisplay) {

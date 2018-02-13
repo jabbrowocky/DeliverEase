@@ -83,10 +83,12 @@ namespace DeliverEase.Controllers
         }
         public ActionResult SubmitOrder(int? id)
         {
-           
+            
+            SendMail invoice = new SendMail();
             PaymentModel model = new PaymentModel();
             model.Del = db.ToDelivers.Where(u => u.CustomerId == id).Where(u=>u.IsComplete == false).Include(u=>u.Rest).FirstOrDefault();
             model.Cust = db.Customers.Where(u => u.Id == id).FirstOrDefault();
+            ApplicationUser user = db.Users.Where(u => u.Id == model.Cust.UserId).First();
             model.Del.CustomerName = model.Cust.CustomerFirstName + " " + model.Cust.CustomerLastName;
             model.Del.CustomerAddress = model.Cust.CustomerAdress;
             foreach (Order order in db.Orders)
@@ -97,8 +99,12 @@ namespace DeliverEase.Controllers
                 }
             }
             model.Del.Items = db.Orders.Where(u => u.ToDeliverId == model.Del.Id).Where(d => d.IsSubmitted == false).ToList();
+            List<string> invoiceList = new List<string>();
+            invoiceList = model.Del.Items.Select(u => u.OrderDetails).ToList();
+            invoiceList.Add(model.Del.OrderCost.ToString());
             model.Del.IsComplete = true;
-                                  
+            var email = user.Email;
+            invoice.SendEmail( email, "Your Order is submitted", "Thanks for ordering, "+ model.Cust.CustomerFirstName + "!" + "<br />" + "<br /><strong><u>Order Items</u></strong>", invoiceList);                      
             db.Entry(model.Del).State = EntityState.Modified;
             db.SaveChanges();
             return View("SubmitOrder", model);

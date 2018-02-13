@@ -10,6 +10,7 @@ namespace DeliverEase
     public class KeyManager
     {
         public string StripeKey { get; set; }
+        public string SendGridKey { get; set; }
         public KeyManager()
         {
             SetKeys();
@@ -17,7 +18,7 @@ namespace DeliverEase
         public void SetKeys()
         {
             JObject keyObject = JObject.Parse(File.ReadAllText(@"C:\Users\DalekMyBalls\Desktop\DevCodeCamp\aspdotnet\deliverease\DeliverEase\DeliverEase\Keys\Keys.json"));
-            //SendGridKey = keyObject.GetValue("SendGridKey").ToString();
+            SendGridKey = keyObject.GetValue("SendGridKey").ToString();
             StripeKey = keyObject.GetValue("StripeSecretKey").ToString();
         }
     }
